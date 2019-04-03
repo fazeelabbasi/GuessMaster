@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GuessMaster</string>
+    <string name="submit_guess">SUBMIT GUESS</string>
+    <string name="name">Name</string>
+    <string name="textview">TextView</string>
+    <string name="change_entity">Change Entity</string>
 </resources>

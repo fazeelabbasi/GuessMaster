@@ -1,14 +1,64 @@
 package GuessMaster;
 
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import com.example.guessmaster.R;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import java.util.Random;
 import java.util.Scanner;
 
-public class GuessMaster {
-	private int numOfEntities;
-	private Entity[] entities;
-	private int totalTicketNum = 0; ///
 
-	
+public class GuessMaster extends AppCompatActivity {
+    private int numOfEntities;
+    private Entity[] entities;
+    private int totalTicketNum = 0;
+    private int[] tickets;
+    private int numOfTickets;
+
+
+    //Stores Entity Name
+    String entName;
+    int entityid = 0;
+    int currentTicketWon = 0;
+
+
+    private TextView entityName;
+    private TextView ticketsum;
+    private Button guessButton;
+    private EditText userIn;
+    private Button btnclearContent;
+    private String userinput;
+    private ImageView entityImage;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_guess_activity);
+        guessButton = (Button) findViewById(R.id.btnGuess);
+        UserIn = (EditText) findViewById(R.id.guessinput);
+        ticketsum = (TextView) findViewById(R.id.ticket);
+        entityName = (TextView) findViewById(R.id.entityName);
+        btnclearContent = (Button) findViewById(R.id.btnClear);
+        entityImage = (ImageView) findViewById((R.id.entityImage));
+        Politician jTrudeau = new Politician("Justin Trudeau", new Date("December", 25, 1971), "Male", "Liberal", 0.25);////
+        Singer cDion = new Singer("Celine Dion", new Date("March", 30, 1961), "Female", "La voix du bon Dieu", new Date("November", 6, 1981), 0.5);////
+        Person myCreator = new Person("My Creator", new Date("September", 1, 2000), "Female", 1);////
+        Country usa = new Country("United States", new Date("July", 4, 1776), "Washinton D.C.", 0.1);////
+
+        final GuessMaster newGame = this;
+    }
+
+
+
+
+
+
+	//private String answer;
 	public GuessMaster() {
 		numOfEntities = 0;
 		entities = new Entity[10];
@@ -36,7 +86,7 @@ public class GuessMaster {
 		
 		Scanner scanner = new Scanner(System.in);
 
-		while (true) {
+
 			String answer = scanner.nextLine();
 			answer = answer.replace("\n", "").replace("\r", "");
 
@@ -64,16 +114,16 @@ public class GuessMaster {
 				System.out.printf("The total number of your tickets is %d.\n", totalTicketNum);
 				System.out.printf("**********************************\n", rd*100);
 				System.out.printf(entity.closingMessage());////
-				break;
+
 			}
-		}
+
 	}
 	
 	public void playGame() {
-		while (true) {
+
 			int entityId = genRandomEntityId();
 			playGame(entityId);
-		}
+
 	}
 
 	public int genRandomEntityId() {
